@@ -200,3 +200,6 @@ while True:
 * Убедитесь в том, что так как задача CPU bound, наращивать количество воркеров, большее количества ядер, бесполезно.
 
 ![image](https://user-images.githubusercontent.com/90722253/144414625-42125ba2-3746-450b-bd49-90a196c3167a.png)
+
+![image](https://user-images.githubusercontent.com/90722253/144442353-d6a06834-c3fd-4644-aae0-101b18bd6eaf.png)
+
