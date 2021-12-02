@@ -33,9 +33,9 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             print('%r generated an exception: %s' % (url, exc))
         else:
             print('%r page is %d bytes' % (url, len(data)))
-                     
-![image](https://user-images.githubusercontent.com/90722253/144412067-274ec656-9480-4ca7-a851-42bea3c0136a.png)  
+                    
 ```
+![image](https://user-images.githubusercontent.com/90722253/144412067-274ec656-9480-4ca7-a851-42bea3c0136a.png)  
 ## ProcessPoolExecutor
 
 ```python
