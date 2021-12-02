@@ -33,7 +33,9 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             print('%r generated an exception: %s' % (url, exc))
         else:
             print('%r page is %d bytes' % (url, len(data)))
+                    
 ```
+![image](https://user-images.githubusercontent.com/90722253/144412067-274ec656-9480-4ca7-a851-42bea3c0136a.png)  
 ## ProcessPoolExecutor
 
 ```python
@@ -74,6 +76,9 @@ if __name__ == '__main__':
 Возврат в синхронный код происходит благодаря использованию генератора `concurrent.futures.as_completed`, который возвращает результаты по мере готовности их в воркерах. Ручная синхронизация отсутствует, что очень удобно.
 
 Помните о том, что в CPython есть [GIL](https://docs.python.org/3/glossary.html#term-global-interpreter-lock), что не позволяет эффективно работать с потоками в CPU-bound задачах.
+
+![image](https://user-images.githubusercontent.com/90722253/144412117-00839200-8848-49c5-b410-6a74a87283a8.png)
+
 
 ### IO-bound. Проверяем ссылки на страницах Википедии
 
@@ -150,11 +155,14 @@ for url in links:
     except Exception as e:
         print(url, e)
 ```
+![image](https://user-images.githubusercontent.com/90722253/144413649-2c50de64-ba90-467d-abb9-e1c16e5110e4.png)
 
 * Замерьте время синхронной проверки ссылок.
 * Перепишите код, используя `ThreadPoolExecutor`. 
 * Изменяйте количество воркеров: 5, 10, 100.
 * Во время работы посмотрите с использованием стандартных утилит вашей OC загрузку памяти, процессора, сети, время работы. Зависят ли они от количества воркеров и как?
+![image](https://user-images.githubusercontent.com/90722253/144413674-78b8e575-bf26-41bb-b71c-2aa1ce9df893.png)
+![image](https://user-images.githubusercontent.com/90722253/144413686-394d1ba1-7603-4206-a092-fea2093cf521.png)
 
 ## CPU-bound. Генерируем монетки
 
@@ -181,6 +189,7 @@ while True:
 34359601233782192016006582448729953029075086207271 0209b01867080f7eaf20f6c674000000
 02809251779741159345845523287375801745436182367614 2fd27ad5f1d1efe1f000c3ee66f00000
 ```
+![image](https://user-images.githubusercontent.com/90722253/144414597-93679ed6-43e5-4cc0-9849-73881728fe56.png)
 
 У нас отсутсвует Блокчейн, то есть мы не можем доказать, что монета была сгенерирована именно нами или принадлежит нам: если мы кому-то ее покажем, ее тут же украдут. Эту часть мы оставим за рамками задания.
 
@@ -190,3 +199,4 @@ while True:
 * Во время работы посмотрите с использованием стандартных утилит вашей OC загрузку памяти, процессора, сети, время работы. Зависят ли они от количества воркеров и как?
 * Убедитесь в том, что так как задача CPU bound, наращивать количество воркеров, большее количества ядер, бесполезно.
 
+![image](https://user-images.githubusercontent.com/90722253/144414625-42125ba2-3746-450b-bd49-90a196c3167a.png)
