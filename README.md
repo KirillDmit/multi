@@ -33,6 +33,8 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             print('%r generated an exception: %s' % (url, exc))
         else:
             print('%r page is %d bytes' % (url, len(data)))
+            
+            ![image](https://user-images.githubusercontent.com/90722253/144412067-274ec656-9480-4ca7-a851-42bea3c0136a.png)
 ```
 ## ProcessPoolExecutor
 
@@ -74,6 +76,9 @@ if __name__ == '__main__':
 Возврат в синхронный код происходит благодаря использованию генератора `concurrent.futures.as_completed`, который возвращает результаты по мере готовности их в воркерах. Ручная синхронизация отсутствует, что очень удобно.
 
 Помните о том, что в CPython есть [GIL](https://docs.python.org/3/glossary.html#term-global-interpreter-lock), что не позволяет эффективно работать с потоками в CPU-bound задачах.
+
+![image](https://user-images.githubusercontent.com/90722253/144412117-00839200-8848-49c5-b410-6a74a87283a8.png)
+
 
 ### IO-bound. Проверяем ссылки на страницах Википедии
 
