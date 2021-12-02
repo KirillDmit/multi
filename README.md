@@ -155,11 +155,14 @@ for url in links:
     except Exception as e:
         print(url, e)
 ```
+![image](https://user-images.githubusercontent.com/90722253/144413649-2c50de64-ba90-467d-abb9-e1c16e5110e4.png)
 
 * Замерьте время синхронной проверки ссылок.
 * Перепишите код, используя `ThreadPoolExecutor`. 
 * Изменяйте количество воркеров: 5, 10, 100.
 * Во время работы посмотрите с использованием стандартных утилит вашей OC загрузку памяти, процессора, сети, время работы. Зависят ли они от количества воркеров и как?
+![image](https://user-images.githubusercontent.com/90722253/144413674-78b8e575-bf26-41bb-b71c-2aa1ce9df893.png)
+![image](https://user-images.githubusercontent.com/90722253/144413686-394d1ba1-7603-4206-a092-fea2093cf521.png)
 
 ## CPU-bound. Генерируем монетки
 
