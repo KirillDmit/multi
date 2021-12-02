@@ -1,18 +1,22 @@
 import concurrent.futures
 import urllib.request
 
-URLS = ['http://www.foxnews.com/',
-        'http://www.cnn.com/',
-        'http://europe.wsj.com/',
-        'http://www.bbc.co.uk/',
-        'http://some-made-up-domain.com/']
+URLS = ['https://www.foxnews.com/',
+        'https://www.cnn.com/',
+        'https://europe.wsj.com/',
+        'https://www.bbc.co.uk/',
+        'https://some-made-up-domain.com/']
 
 # Retrieve a single page and report the URL and contents
+
+
 def load_url(url, timeout):
     with urllib.request.urlopen(url, timeout=timeout) as conn:
         return conn.read()
 
 # We can use a with statement to ensure threads are cleaned up promptly
+
+
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     # Start the load operations and mark each future with its URL
     future_to_url = {executor.submit(load_url, url, 60): url for url in URLS}
